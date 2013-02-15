@@ -38,6 +38,7 @@ public class MainActivity extends MapActivity implements LocationListener {
 	//シミュレーション用変数
 	double lat = 35.681390;
 	double lon = 139.766040;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -115,10 +116,11 @@ public class MainActivity extends MapActivity implements LocationListener {
 		Log.v("Time", String.valueOf(location.getTime()));
 		Log.v("Speed", String.valueOf(location.getSpeed()));
 		Log.v("Bearing", String.valueOf(location.getBearing()));
-		lat += 0.01;
-		lon += 0.01;
+		
 		map.getOverlays().clear();
-		LocationListLoader lll = new LocationListLoader(this, "2",String.valueOf(lat),String.valueOf(lon));
+		pinItemList.clear();
+		pinOverlay.clearPoint();
+		LocationListLoader lll = new LocationListLoader(this, "2",String.valueOf(location.getLatitude()),String.valueOf(location.getLongitude()));
         lll.forceLoad();
 	}
 

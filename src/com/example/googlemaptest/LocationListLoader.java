@@ -112,6 +112,7 @@ public class LocationListLoader extends android.content.AsyncTaskLoader<String[]
 						}
 					}
 					AddPins(pl);
+					pl.clear();
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -122,6 +123,7 @@ public class LocationListLoader extends android.content.AsyncTaskLoader<String[]
 	}
 	
 	public void AddPins(ArrayList<PointData> pl){
+		Log.d("log","pl.size:"+pl.size());
 		for(int i=0;i<pl.size();i++){
 			GeoPoint geopoint = new GeoPoint( (int)(pl.get(i).getLat()*1000000), (int)(pl.get(i).getLon()*1000000));
 	        ma.addPin(geopoint);
